@@ -1,0 +1,45 @@
+name: Atualizar Pagina do Notion
+
+# Gatilhos: Quando esta automacao deve rodar?
+on:
+  # 1. Agendamento: todo dia as 3h da manha (horario UTC)
+  schedule:
+    - cron: '0 3 * * *'
+
+  # 2. Manual: permite iniciar a automacao pela interface do GitHub
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Passo 1: Clona o seu repositorio para o ambiente da automacao
+      - name: Checkout do repositorio
+        uses: actions/checkout@v3
+
+      # Passo 2: Configura o ambiente Python na versao 3.10
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Passo 3: Instala a biblioteca 'requests' que o script precisa
+      - name: Instalar dependencias
+        run: pip install requests
+
+      # Passo 4: Executa o seu script Python
+      - name: Executar script de exportacao
+        env:
+          # Passa os segredos configurados para o script como variaveis de ambiente
+          TOKEN_NOTION: ${{ secrets.TOKEN_NOTION }}
+          ID_DA_PAGINA: ${{ secrets.ID_DA_PAGINA }}
+        run: python exportador_notion.py
+
+      # Passo 5: Salva as alteracoes (o novo .md) de volta no repositorio
+      - name: Fazer commit e push do arquivo atualizado
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add pagina_exportada.md
+          # O comando abaixo so faz commit se houver alguma mudanca no arquivo
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Atualiza arquivo Markdown do Notion" && git push)
