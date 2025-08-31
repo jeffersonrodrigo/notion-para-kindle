@@ -12,6 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permissao para o bot fazer commit de volta no repositorio
+
     steps:
       # Passo 1: Clona o seu repositorio para o ambiente da automacao
       - name: Checkout do repositorio
