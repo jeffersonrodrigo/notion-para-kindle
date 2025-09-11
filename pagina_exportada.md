@@ -503,6 +503,34 @@ A **Virtual Cloud Network (VCN)** é a sua **rede privada e customizável** na n
 
 1. **Instâncias (Compute Instances):** Seus recursos, como máquinas virtuais, são criados **dentro das subnets**. Cada instância recebe um endereço IP privado do intervalo daquela subnet para poder se comunicar.
 
+> 
+> ### **Anotações Essenciais: Desvendando Endereços IP e CIDR**
+> ### A Base de Tudo: O Endereço IP e os 32 Bits 🧱
+>   Todo endereço IPv4 (ex: `10.0.1.50`) é uma representação amigável para nós, humanos, de um número de **32 bits** (uma sequência de 32 zeros e uns). Esses 32 bits são divididos em 4 grupos de 8 bits, que formam os quatro números que vemos.
+>   `8 bits . 8 bits . 8 bits . 8 bits = 32 bits no total`
+> ---
+> ### O CIDR (/X): Dividindo o Endereço em Duas Partes 📏
+>   A notação CIDR (o número depois da `/`, como `/16` ou `/24`) é a instrução que nos diz exatamente como dividir esses 32 bits em duas partes cruciais:
+>   1. **Parte da Rede (Network Prefix):**
+>     - É a parte **FIXA** do endereço. O número `/X` nos diz quantos bits, começando da esquerda, são usados para identificar a "rua" ou o "bairro".
+>     - Todos os dispositivos na mesma rede/subnet terão essa parte do endereço **idêntica**. É o que define a qual rede eles pertencem.
+>   1. **Parte do Host (Host Identifier):**
+>     - É a parte **LIVRE** do endereço. São os bits que sobram para criar os endereços únicos para cada "casa" (instância) naquela rua. É a parte que pode variar.
+> ---
+> ### Na Prática: VCN e Subnets 🏙️
+>   Vamos aplicar o conceito à nossa analogia da cidade e aos exemplos do OCI:
+> <!-- Bloco do tipo 'table' não suportado -->
+> ### A Conta Rápida (Para a Prova) 🧮
+>   Para saber rapidamente quantos endereços uma rede ou subnet pode ter, siga estes dois passos:
+>   1. **Calcule os Bits Livres:**
+>     - Fórmula: `Bits Livres = 32 - (Número do CIDR)`
+>     - *Exemplo para /24:* `32 - 24 = 8 bits livres.`
+>     - *Exemplo para /16:* `32 - 16 = 16 bits livres.`
+>   1. **Calcule o Total de Endereços:**
+>     - Fórmula: `Total de Endereços = 2 ^ (Bits Livres)`
+>     - *Exemplo para /24:* 2⁸ = **256 endereços**.
+>     - *Exemplo para /16:* 2¹⁶ = **65.536 endereços**.
+
 ---
 
 ### Os Portões de Saída e Entrada da VCN (Gateways) 🚪
