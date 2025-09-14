@@ -1,6 +1,6 @@
 [https://mylearn.oracle.com/ou/ekit/148111/35644/90da110a-5f86-4d90-af98-37230bb9a5b3/course](https://mylearn.oracle.com/ou/ekit/148111/35644/90da110a-5f86-4d90-af98-37230bb9a5b3/course)
 
-### **Arquitetura Física do OCI (Core Constructs)**
+# **Arquitetura Física do OCI (Core Constructs)**
 
 ### **1. Conceitos Fundamentais (A Hierarquia)**
 
@@ -563,15 +563,15 @@ Gateways são roteadores virtuais que controlam como o tráfego entra e sai da s
 
 ---
 
-### **Demo: Criando uma VCN com o Wizard**
+## **Demo: Criando uma VCN com o Wizard**
 
-## O Que o VCN Wizard Faz por Você? 🧙‍♂️
+### O Que o VCN Wizard Faz por Você? 🧙‍♂️
 
 O **VCN Wizard** é a forma mais **rápida e fácil** de criar uma VCN funcional no OCI. Ele automatiza a criação não apenas da rede em si, mas de todos os componentes essenciais (subnets, gateways, tabelas de rota) com uma configuração padrão e segura. É a ferramenta ideal para começar e evita erros comuns de configuração manual.
 
 ---
 
-## Passo a Passo: Usando o VCN Wizard 🧑‍💻
+### Passo a Passo: Usando o VCN Wizard 🧑‍💻
 
 1. **Navegação:** Vá para o menu ☰ **Networking** -> **Virtual Cloud Networks**.
 
@@ -588,7 +588,7 @@ O **VCN Wizard** é a forma mais **rápida e fácil** de criar uma VCN funcional
 
 ---
 
-## O Resultado: O Que Foi Criado Automaticamente? ✅
+### O Resultado: O Que Foi Criado Automaticamente? ✅
 
 Em segundos, o wizard cria uma arquitetura de rede completa e pronta para usar. A lista de componentes criados é um ponto muito importante para a prova:
 
@@ -608,7 +608,7 @@ Em segundos, o wizard cria uma arquitetura de rede completa e pronta para usar. 
 
 - ✅ Duas **Listas de Segurança (Security Lists)**, uma para cada subnet, com regras de firewall básicas.
 
-## Dica da Demo: Visualizando sua Rede 📈
+### Dica da Demo: Visualizando sua Rede 📈
 
 Após a criação, a melhor forma de entender a topologia é usando o **Network Visualizer** (encontrado em *Network Command Center*). Esta ferramenta mostra um **diagrama visual** da sua VCN, mostrando como as subnets estão conectadas aos gateways. Isso facilita muito a compreensão do fluxo de tráfego.
 
@@ -618,7 +618,7 @@ Após a criação, a melhor forma de entender a topologia é usando o **Network 
 
 <!-- Bloco do tipo 'image' não suportado -->
 
-## O que são Route Tables (Tabelas de Rota)? 🗺️
+### O que são Route Tables (Tabelas de Rota)? 🗺️
 
 As **Route Tables** funcionam como o "GPS" da sua VCN. Elas contêm regras que dizem para onde enviar o tráfego que **precisa sair da VCN** (para a internet, para sua rede on-premises, ou para outra VCN).
 
@@ -631,7 +631,7 @@ As **Route Tables** funcionam como o "GPS" da sua VCN. Elas contêm regras que d
 
 ---
 
-## A Regra de Ouro: A Rota Mais Específica Vence 🏆
+### A Regra de Ouro: A Rota Mais Específica Vence 🏆
 
 Quando um pacote de dados precisa sair e seu destino corresponde a mais de uma regra na tabela, o OCI sempre usa a regra **mais específica**. Isso é conhecido como **"longest prefix match"** (correspondência de prefixo mais longo).
 
@@ -645,7 +645,7 @@ Quando um pacote de dados precisa sair e seu destino corresponde a mais de uma r
 
 ---
 
-## Conectando VCNs umas às Outras (Peering)
+### Conectando VCNs umas às Outras (Peering)
 
 - **Local Peering (Mesma Região):**
   - **Quando usar:** Para conectar duas VCNs que estão na **mesma região** do OCI.
@@ -657,7 +657,7 @@ Quando um pacote de dados precisa sair e seu destino corresponde a mais de uma r
 
 ---
 
-## Escalando a Conectividade: O DRG como Roteador Central 🚀
+### Escalando a Conectividade: O DRG como Roteador Central 🚀
 
 Conectar muitas VCNs com *peering* ponto a ponto (um a um) é complexo e não escala bem. A solução moderna para isso é usar o **DRG (v2)** como um **roteador central (hub)**, criando uma topologia conhecida como *hub-and-spoke*.
 
@@ -671,7 +671,7 @@ Conectar muitas VCNs com *peering* ponto a ponto (um a um) é complexo e não es
 
 O OCI oferece duas maneiras de implementar regras de firewall virtuais para controlar o tráfego na sua VCN.
 
-## O Firewall da Subnet: Security Lists (SLs) 🛡️
+### O Firewall da Subnet: Security Lists (SLs) 🛡️
 
 Pense nas *Security Lists* como o firewall principal que protege o "bairro" inteiro (a subnet).
 
@@ -687,7 +687,7 @@ Pense nas *Security Lists* como o firewall principal que protege o "bairro" inte
 
 ---
 
-## O Firewall da Instância: Network Security Groups (NSGs) ➡️ 🖥️
+### O Firewall da Instância: Network Security Groups (NSGs) ➡️ 🖥️
 
 Pense nos NSGs como um segurança particular para um grupo específico de "casas" (instâncias), mesmo que elas estejam no mesmo bairro.
 
@@ -703,15 +703,15 @@ Pense nos NSGs como um segurança particular para um grupo específico de "casas
 
 ---
 
-## Tabela Comparativa: SL vs. NSG (Essencial para a Prova!) ⚔️
+### Tabela Comparativa: SL vs. NSG (Essencial para a Prova!) ⚔️
 
 <!-- Bloco do tipo 'table' não suportado -->
 
 ---
 
-### **OCI Load Balancer**
+## **OCI Load Balancer**
 
-## Por que Usar um Load Balancer? 🤔
+### Por que Usar um Load Balancer? 🤔
 
 Um *Load Balancer* atua como um "controlador de tráfego" na entrada da sua aplicação. Ele recebe as requisições dos clientes e as distribui de forma inteligente entre vários servidores de backend.
 
@@ -749,7 +749,7 @@ O OCI oferece dois tipos principais de Load Balancer, cada um operando em uma "c
 
 ---
 
-## Qual Escolher? A Tabela de Decisão ⚔️
+### Qual Escolher? A Tabela de Decisão ⚔️
 
 <!-- Bloco do tipo 'table' não suportado -->
 
@@ -759,7 +759,7 @@ O OCI oferece dois tipos principais de Load Balancer, cada um operando em uma "c
 
 Esta demo mostra o processo completo para configurar um Load Balancer público que distribui tráfego para servidores web em uma subnet privada.
 
-## 1. Preparação do Terreno (Rede e Segurança) 🏗️
+### 1. Preparação do Terreno (Rede e Segurança) 🏗️
 
 Antes de tudo, precisamos criar o ambiente de rede.
 
@@ -772,7 +772,7 @@ Antes de tudo, precisamos criar o ambiente de rede.
 
 ---
 
-## 2. Construindo os Servidores (Backends) 🖥️
+### 2. Construindo os Servidores (Backends) 🖥️
 
 Agora, criamos os servidores web que receberão o tráfego do Load Balancer.
 
@@ -786,7 +786,7 @@ Agora, criamos os servidores web que receberão o tráfego do Load Balancer.
 
 ---
 
-## 3. Instalando o "Controlador de Tráfego" (Load Balancer) 🚦
+### 3. Instalando o "Controlador de Tráfego" (Load Balancer) 🚦
 
 Com a rede e os servidores prontos, é hora de criar o Load Balancer.
 
@@ -807,7 +807,7 @@ Com a rede e os servidores prontos, é hora de criar o Load Balancer.
 
 ---
 
-## 4. O Teste Final e a Verificação ✅
+### 4. O Teste Final e a Verificação ✅
 
 1. **Aguardar Saúde (Health):** Após criar o Load Balancer, aguarde o status do **Backend Set Health** mudar de `Pending` para **OK** (verde). Isso confirma que ele conseguiu se comunicar com os servidores e que eles estão saudáveis.
 
@@ -871,15 +871,13 @@ O OCI oferece instâncias com diferentes arquiteturas de processadores para se a
 
 ## O Básico sobre Instâncias
 
----
-
-## O Que é uma Instância e do que ela precisa para viver? 🌱
+### O Que é uma Instância e do que ela precisa para viver? 🌱
 
 Uma **instância** é o termo que usamos para um **servidor (host)** no OCI, seja ele uma Máquina Virtual (VM) ou um servidor Bare Metal. Para que uma instância possa ser criada e funcionar, ela depende de outros dois serviços essenciais: **Rede (Networking)** e **Armazenamento (Storage)**.
 
 ---
 
-## Dependência #1: Rede (VCN, Subnet e VNIC) 🌐
+### Dependência #1: Rede (VCN, Subnet e VNIC) 🌐
 
 Antes de sequer pensar em criar uma instância, você **precisa ter** uma **Virtual Cloud Network (VCN)** e uma **Subnet** já configuradas.
 
@@ -891,7 +889,7 @@ Antes de sequer pensar em criar uma instância, você **precisa ter** uma **Virt
 
 ---
 
-## Dependência #2: Armazenamento Remoto (Block Volume) 💾
+### Dependência #2: Armazenamento Remoto (Block Volume) 💾
 
 Os discos de uma instância do OCI **não são locais** (não estão fisicamente dentro do servidor que a hospeda). Eles são volumes de armazenamento que vivem na rede e são fornecidos pelo serviço de **Block Volume**.
 
@@ -905,7 +903,7 @@ Os discos de uma instância do OCI **não são locais** (não estão fisicamente
 
 ---
 
-## Um Recurso Chave para Alta Disponibilidade: Live Migration ✈️
+### Um Recurso Chave para Alta Disponibilidade: Live Migration ✈️
 
 - **O problema:** O hardware físico onde sua VM está rodando pode precisar de manutenção ou, em casos raros, falhar.
 
@@ -930,7 +928,7 @@ SSH (Secure Shell) é o protocolo padrão para **acessar servidores Linux remota
 
 ---
 
-## Passo a Passo: Gerando seu Par de Chaves no Cloud Shell 🧑‍💻
+### Passo a Passo: Gerando seu Par de Chaves no Cloud Shell 🧑‍💻
 
 1. **Abra o Cloud Shell:** Clique no ícone `**>_**` no menu superior da console do OCI.
 
@@ -939,7 +937,7 @@ SSH (Secure Shell) é o protocolo padrão para **acessar servidores Linux remota
   - Entre no diretório recém-criado: `cd ssh-keys`
 
 1. **Execute o Comando de Geração:**
-  - Digite o comando: `ssh-keygen -t rsa -b 2048 -f MinhaChave`
+  - Digite o comando: `ssh-keygen -b 2048 -t rsa -f MinhaChave`
   - **O que significa cada parte?**
     - `ssh-keygen`: A ferramenta para gerar chaves.
     - `t rsa`: Define o tipo de algoritmo (RSA é o mais comum).
@@ -952,15 +950,15 @@ SSH (Secure Shell) é o protocolo padrão para **acessar servidores Linux remota
   - `MinhaChave` (a chave privada 🤫)
   - `MinhaChave.pub` (a chave pública 🌍)
 
-## A Lição Mais Importante da Demo 💡
+### A Lição Mais Importante da Demo 💡
 
 O Cloud Shell é a maneira mais **conveniente e integrada** de gerar as chaves SSH que você precisará para se conectar às suas instâncias de compute. Você não precisa de nenhuma ferramenta externa como o PuTTYgen ou de configurar nada no seu computador pessoal.
 
 ---
 
-### **Demo: Criando uma Instância de Compute (Método Manual)**
+## **Demo: Criando uma Instância de Compute (Método Manual)**
 
-## Fase 1: Construindo a Rede Manualmente 🏗️
+### Fase 1: Construindo a Rede Manualmente 🏗️
 
 Diferente do VCN Wizard, aqui criamos cada componente da rede passo a passo para entender a lógica por trás da conectividade.
 
@@ -993,7 +991,7 @@ Diferente do VCN Wizard, aqui criamos cada componente da rede passo a passo para
 
 ---
 
-## Fase 2: Lançando a Instância de Compute 🚀
+### Fase 2: Lançando a Instância de Compute 🚀
 
 Com a rede pronta, agora podemos criar o servidor.
 
@@ -1007,22 +1005,24 @@ Com a rede pronta, agora podemos criar o servidor.
 
 ---
 
-## Fase 3: Acessando e Configurando o Servidor 👨‍💻
+### Fase 3: Acessando e Configurando o Servidor 👨‍💻
 
 1. **Obtenha o IP Público:** Após a instância ser criada e estar no estado "Running", copie seu IP Público na página de detalhes.
 
 1. **Conecte-se via SSH (pelo Cloud Shell):**
+  - Use o comando `cat MinhaChave.pub` para visualizar o conteúdo da chave pública a ser instalada na instância
+  - Copie todo o texto e em Add SSH Keys selecione a opção Paste public keys e cole a chave pública
   - Use o comando `ssh -i <arquivo_da_chave_privada> opc@<IP_Público_da_instância>`
 
-1. **Instale o Servidor Web:** Uma vez conectado, execute os comandos para instalar o Apache, iniciar o serviço, abrir o firewall do próprio sistema operacional e criar uma página `index.html` de teste.
+1. **Instale o Servidor Web:** Uma vez conectado, execute os comandos para instalar o Apache (`sudo yum -y install htpd`), iniciar o serviço, abrir o firewall do próprio sistema operacional e criar uma página `index.html` de teste.
 
 ---
 
-## Fase 4: O Teste Final ✅
+### Fase 4: O Teste Final ✅
 
 Abra um navegador e acesse o **IP Público** da sua instância. A página de teste do Apache que você configurou deve ser exibida, confirmando que tudo, da rede ao servidor, está funcionando corretamente.
 
-## Resumo: Manual vs. Wizard ⚔️
+### Resumo: Manual vs. Wizard ⚔️
 
 O método **manual** dá controle total e é ótimo para aprender, mas exige que você configure cada componente separadamente (Subnet, IGW, Route Table, Security List). O **Wizard** automatiza todos esses passos, sendo mais rápido e menos propenso a erros para cenários padrão.
 
@@ -1032,7 +1032,7 @@ O método **manual** dá controle total e é ótimo para aprender, mas exige que
 
 Escalabilidade é a capacidade do seu sistema de crescer (ou encolher) para atender à demanda. No OCI, existem duas formas principais de fazer isso.
 
-## Os Dois Tipos de Escalabilidade ⚖️
+### Os Dois Tipos de Escalabilidade ⚖️
 
 ### Escalabilidade Vertical (Scaling Up/Down) 💪
 
@@ -1057,7 +1057,7 @@ Escalabilidade é a capacidade do seu sistema de crescer (ou encolher) para aten
 
 ---
 
-## Como Configurar o Autoscaling (Processo de 3 Passos) ⚙️
+### Como Configurar o Autoscaling (Processo de 3 Passos) ⚙️
 
 Configurar o *Autoscaling* é um processo lógico que envolve a criação de três componentes em sequência:
 
@@ -1099,7 +1099,7 @@ A principal vantagem dos contêineres é a **portabilidade**, o que os torna ide
 
 ---
 
-## O Desafio da Escala e a Solução: Kubernetes (K8s) 🤖
+### O Desafio da Escala e a Solução: Kubernetes (K8s) 🤖
 
 Contêineres são ótimos, mas gerenciar centenas ou milhares deles (implantar, conectar em rede, escalar, consertar falhas) é um grande desafio. O processo de automatizar tudo isso é chamado de **Orquestração de Contêineres**.
 
@@ -1107,7 +1107,7 @@ Contêineres são ótimos, mas gerenciar centenas ou milhares deles (implantar, 
 
 ---
 
-## OKE: O Kubernetes Gerenciado pela Oracle ⚙️
+### OKE: O Kubernetes Gerenciado pela Oracle ⚙️
 
 **Oracle Container Engine for Kubernetes (OKE)** é o serviço da Oracle que oferece um **Kubernetes totalmente gerenciado, escalável e de alta disponibilidade**.
 
@@ -1117,7 +1117,7 @@ Contêineres são ótimos, mas gerenciar centenas ou milhares deles (implantar, 
 
 ---
 
-## As Opções do OKE (Essencial para a Prova!) ⭐
+### As Opções do OKE (Essencial para a Prova!) ⭐
 
 Ao criar um cluster OKE, você precisa fazer duas escolhas importantes:
 
