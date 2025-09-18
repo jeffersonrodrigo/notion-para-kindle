@@ -1131,5 +1131,100 @@ Ao criar um cluster OKE, você precisa fazer duas escolhas importantes:
 
 <!-- Bloco do tipo 'table' não suportado -->
 
+## OCI Container Instances 📦
+
+### O Problema: "Quero Rodar um Contêiner, mas Sem Complicação" 🤔
+
+Muitas vezes, um desenvolvedor tem uma aplicação já empacotada em um contêiner e só quer executá-la na nuvem de forma rápida, simples e segura.
+
+As opções tradicionais podem ter desvantagens para casos de uso simples:
+
+- **OKE (Kubernetes):** É extremamente poderoso para orquestração, mas pode ser complexo e um exagero para uma única aplicação ou para um ambiente de teste.
+
+- **VM + Docker:** Você pode criar uma VM, instalar o Docker e rodar seu contêiner. Funciona, mas isso te obriga a **gerenciar o servidor** (fazer patches no SO, atualizar o Docker, etc.), o que gera complexidade operacional.
+
 ---
 
+### A Solução: OCI Container Instances (Contêineres Serverless) ✨
+
+**Container Instances** é o serviço da Oracle que oferece a maneira mais **rápida e simples** de executar um ou mais contêineres sem precisar gerenciar servidores ou usar um orquestrador como o Kubernetes.
+
+É um serviço de **computação serverless para contêineres**.
+
+---
+
+### Como Funciona? (Você Traz o Contêiner, a Oracle Cuida do Resto)
+
+A ideia é eliminar a complexidade operacional. O modelo de responsabilidade é muito claro:
+
+**O que você fornece:**
+
+- A **imagem do seu contêiner** (de um registro como o OCI Registry ou Docker Hub).
+
+- Configurações básicas como limites de CPU e Memória, variáveis de ambiente e comandos de inicialização.
+
+**O que a Oracle gerencia para você:**
+
+- Toda a infraestrutura de computação subjacente (a máquina virtual).
+
+- O sistema operacional e todos os seus patches de segurança.
+
+- O *container runtime* (o software que executa os contêineres) e suas atualizações.
+
+Você pode, inclusive, rodar **múltiplos contêineres** dentro de uma única *Container Instance*, e eles compartilharão os recursos e a rede.
+
+---
+
+### Quando Usar o Quê? (A Tabela de Decisão) 🎯
+
+Para a prova, é crucial saber quando escolher cada serviço.
+
+<!-- Bloco do tipo 'table' não suportado -->
+
+---
+
+## Computação Serverless com Oracle Functions ☁️
+
+### O que é "Serverless"? (A Próxima Etapa da Evolução)
+
+*Serverless* é um modelo de computação em nuvem onde o provedor (Oracle) gerencia toda a infraestrutura de servidores, e você, o desenvolvedor, se preocupa apenas em escrever e implantar o **código** em pequenas unidades chamadas "funções".
+
+- **A "pegadinha" do Serverless:** Apesar do nome, **existem servidores!** A grande diferença é que você não os vê, não os gerencia e, mais importante, não paga por eles quando estão ociosos.
+
+- **Evolução:** É o nível máximo de abstração na jornada da computação: **Bare Metal -> VMs -> Contêineres -> Functions (Serverless)**. A cada passo, sua preocupação com a infraestrutura diminui.
+
+---
+
+### Oracle Functions: O Serviço Serverless do OCI 🚀
+
+**Oracle Functions** é a plataforma de **Função como Serviço (FaaS)** do OCI, projetada para ser simples, escalável e eficiente.
+
+- **Características Principais:**
+  - **Baseado em Código Aberto:** É construído sobre o projeto open source **Fn Project**, o que ajuda a evitar o aprisionamento tecnológico (*vendor lock-in*) e aumenta a portabilidade.
+  - **Orientado a Eventos:** Funções são perfeitas para uma arquitetura orientada a eventos. Uma ação (o **evento**) acontece e dispara a execução da sua função (a **ação de resposta**).
+  - **Execução em Contêineres:** Por baixo dos panos, seu código é empacotado em uma imagem de contêiner Docker para ser executado de forma isolada e consistente.
+  - **Escalabilidade Automática:** A plataforma escala automaticamente para lidar com a demanda, executando múltiplas instâncias da sua função em paralelo se necessário, sem que você precise configurar nada.
+
+---
+
+### O Fluxo de Trabalho de uma Função: Do Código à Execução
+
+1. **Empacotar (Package):** Você faz o upload do seu código. O Oracle Functions o transforma em uma **imagem de contêiner** e a armazena no **OCI Registry (OCIR)**.
+
+1. **Disparar (Trigger):** Você define como a função será acionada. Pode ser uma chamada direta (via CLI/API) ou um **evento** do OCI (ex: "toda vez que um novo arquivo for salvo no Bucket de Vendas").
+
+1. **Executar (Execute):** Quando o gatilho é ativado, o serviço executa seu código. O código, por sua vez, pode interagir com outros serviços do OCI (como um banco de dados) ou sistemas externos.
+
+---
+
+### A Vantagem Principal: Preço por Consumo Real 💰
+
+Este é o maior diferencial do modelo *serverless*. Com o Oracle Functions, você adota um modelo de **preço por consumo puro**.
+
+- Você paga **apenas pelos recursos consumidos durante o tempo em que seu código está efetivamente em execução**.
+
+- Se sua função ficar parada por horas ou dias sem ser chamada, o custo é **zero**.
+
+# Armazenamento
+
+## Introdução
